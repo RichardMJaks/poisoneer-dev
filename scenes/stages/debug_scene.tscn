@@ -1,3 +1,40 @@
-[gd_scene format=3 uid="uid://w0yhj3nw0fuw"]
+[gd_scene load_steps=4 format=3 uid="uid://w0yhj3nw0fuw"]
+
+[ext_resource type="PackedScene" uid="uid://bow68aetn3t1u" path="res://scenes/player/player.tscn" id="1_fq7y6"]
+[ext_resource type="Script" path="res://scenes/camera/camera_controller.gd" id="2_08e7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n8gv"]
 
 [node name="DebugScene" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(153, 164)
+scale = Vector2(8.58555, -2.50006)
+
+[node name="Panel" type="Panel" parent="StaticBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_0n8gv")
+
+[node name="Player" parent="." instance=ExtResource("1_fq7y6")]
+position = Vector2(123, 110)
+speed = 50.0
+jump_height = 30.0
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(4.405, 4.405)
+script = ExtResource("2_08e7m")
+player = NodePath("../Player")
+follow_speed = 30.0

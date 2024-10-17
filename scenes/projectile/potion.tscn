@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://xp7px76gjcbn"]
+
+[ext_resource type="Script" path="res://scenes/projectile/potion.gd" id="1_166dd"]
+[ext_resource type="Texture2D" uid="uid://cysikurcg0v1j" path="res://art/000.png" id="2_sd12p"]
+
+[node name="Potion" type="RigidBody2D"]
+script = ExtResource("1_166dd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sd12p")
+flip_h = true
